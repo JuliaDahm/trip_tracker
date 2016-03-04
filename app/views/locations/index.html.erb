@@ -1,0 +1,20 @@
+<h1>Locations</h1>
+
+<hr />
+
+<% if @locations.any? %>
+  <% @locations.each do |location| %>
+    <h3><%= link_to location.name, trip_location_path(@trip, location) %></h3>
+    <br />
+    <%= link_to 'Edit Location', edit_trip_location_path(@trip, location) %>
+    <br />
+    <%= link_to 'Delete Location', trip_location_path(@trip, location), method: :delete %>
+    <% end %>
+<% else %>
+  <p>You don't have any locations set.</p> 
+  <p>Select 'New Location' below to get started.</p>
+<% end %>
+<br />
+<hr />
+<%= link_to 'Add Location', new_trip_location_path %>
+<%= link_to 'Go Back to Trip', trip_path(@trip) %>

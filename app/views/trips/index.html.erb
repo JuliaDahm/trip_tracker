@@ -1,0 +1,19 @@
+<h1>Trip Tracker</h1>
+<hr />
+
+<% if @trips.any? %>
+  <% @trips.each do |trip| %>
+    <h3><%= link_to trip.name, trip_path(trip) %></h3>
+    <br />
+    <%= link_to 'Edit Trip Name', edit_trip_path(trip) %>
+    <br />
+    <%= link_to 'Delete Trip', trip_path(trip), method: :delete %>
+    <% end %>
+<% else %>
+  <p>You don't have any trips saved.</p> 
+  <p>Select 'New Trip' below to get started.</p>
+<% end %>
+<br />
+<hr />
+<%= link_to 'New Trip', new_trip_path %>
+
